@@ -23,7 +23,7 @@ public class MainBot {
             letters.put(AlphabetGame.alphabet[i], i);
         }
 
-        JDA jda = JDABuilder.createDefault("MTA5MDMwMzA0NTg0MzMwODU2NA.G1lugl.gxQVCys170gcTmTa_Oa-nPSwvKwRmKCr3WwYQY")
+        JDA jda = JDABuilder.createDefault("Insert api key here")
                         .enableIntents(GatewayIntent.MESSAGE_CONTENT)
                         .setStatus(OnlineStatus.ONLINE)
                 .setActivity(Activity.watching("Team scraps"))
