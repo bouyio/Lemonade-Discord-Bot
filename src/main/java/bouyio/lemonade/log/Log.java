@@ -16,9 +16,6 @@ import java.time.ZonedDateTime;
 public class Log {
 
     public static PrintStream outputToFile;
-    //public static boolean loggingToChannel = true;
-    //public static boolean loggingToFile = true;
-
 
     static {
 
@@ -34,7 +31,6 @@ public class Log {
 
     }
 
-
     public static void log(MessageReceivedEvent event, LoggingServer server) throws IOException {
 
 
@@ -44,7 +40,6 @@ public class Log {
 
         if(server.logsToChannel){
 
-            // These lines handle what happens if a channel is private (those messages are not stored)
             if (event.isFromType(ChannelType.PRIVATE)) {
                 System.out.printf("[PM] %s: %s\n", event.getAuthor().getName(),
                         event.getMessage().getContentDisplay());
@@ -54,19 +49,16 @@ public class Log {
                         event.getChannel().getName(), Objects.requireNonNull(event.getMember()).getEffectiveName(),
                         event.getMessage().getContentDisplay());
 
-                // These lines send the logged messages to the log channel
                 TextChannel textChannel = event.getGuild().getTextChannelsByName("log", true).get(0);
                 textChannel.sendMessage(currentMessage).queue();
             }
         } if(server.logsToFile){
 
-            // These lines handle what happens if a channel is private (those messages are not stored)
             if (event.isFromType(ChannelType.PRIVATE)) {
                 System.out.printf("[PM] %s: %s\n", event.getAuthor().getName(),
                         event.getMessage().getContentDisplay());
             } else {
 
-                // These lines store the messages to a file
                 System.out.printf("[%s][%s] %s: %s\n", event.getGuild().getName(),
                         event.getChannel().getName(), Objects.requireNonNull(event.getMember()).getEffectiveName(),
                         event.getMessage().getContentDisplay());
